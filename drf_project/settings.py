@@ -38,7 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 3rd party apps
     'rest_framework',
+    'tinymce',
+    'django_phonenumbers',
+
+    # local apps
+    'accounts.apps.AccountsConfig',
     'core.apps.CoreConfig',
     'todo.apps.TodoConfig',
     'blog.apps.BlogConfig',
@@ -117,6 +123,20 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+ 
+# “PHONE_NUMBER_REGION” determines which country region will be selected in admin’s corresponding phone number field
+# “PHONE_NUMBERS_FORMATS_BY_REGION” is used in “phone_number_format” filter
+
+PHONE_NUMBER_REGION = 'UZB'
+PHONE_NUMBERS_FORMATS_BY_REGION = {
+    'UZB': {
+        'pattern': '(\\d{2})(\\d{3})(\\d{3})(\\d{4})', 'format': '\\1\\2\\3\\4', 'prefix_format': '+%s (%s)'
+    },
+    # 'US': {
+    #     'pattern': '(\\d{3})(\\d{3})(\\d{4})', 'format': '\\1 \\2-\\3', 'prefix_format': '+%s (%s)'
+    # },
+}
 
 
 # Static files (CSS, JavaScript, Images)

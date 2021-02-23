@@ -17,7 +17,7 @@ from todo.models import (
 
 # Create your views here.
 
-class TaskListView(LoginRequiredMixin, ListView):
+class TaskListView(ListView):
     model = ToDo
     template_name='index.html'
 
